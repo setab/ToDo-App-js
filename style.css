@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: #1d1e22;
+  color: white;
+}
+.container,
+completed_container {
+  /* border: 2px solid white; */
+  width: 50%;
+  display: block;
+  /* width: 400px; */
+  margin: 100px auto;
+}
+#task {
+  outline: none;
+  border: none;
+  width: 80%;
+  height: 30px;
+  border-bottom: 0.5px solid rgb(150, 145, 145);
+}
+.new_task,
+.completed_task {
+  display: flex;
+  margin: 30px 0;
+  justify-content: center;
+  align-items: center;
+  /* padding: auto; */
+}
+.containerBox {
+  display: block;
+  text-align: center;
+}
+button {
+  width: 15%;
+  height: 35px;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  background-color: #248c46;
+}
+button:hover {
+  background-color: aliceblue;
+  color: black;
+  transition: 0.1s;
+}
+.toDo,
+.completed {
+  width: 50%;
+  margin: auto;
+}
+.toDo ul li,
+.completed ul li {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.toDo ul li p,
+.completed ul li p {
+  width: 100%;
+  overflow: auto;
+  font-size: 1.2rem;
+  display: flex;
+  text-align: left;
+  justify-content: space-between;
+  padding: 10px 0 10px 20px;
+  margin: 10px;
+  border: 0.5px solid rgb(150, 145, 145);
+  border-radius: 6px;
+}
+/* .completed{
+    border: 2px black solid;
+    width: 50%;
+    margin: auto;
+} */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background-color: #1d1e22;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555555;
+}
