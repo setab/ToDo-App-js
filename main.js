@@ -46,9 +46,9 @@ function complete_task(list_object) {
     }
   });
 }
-function remove_task(list_object, c) {
+function remove_task(list_object, completed_task) {
   list_object.b.onclick = function () {
-    if (c) {
+    if (completed_task) {
       list_object.l.remove();
     } else {
       list_object.c.removeChild(list_object.l);
