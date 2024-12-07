@@ -1,92 +1,167 @@
+/* General Reset */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: #1d1e22;
-  color: white;
+  box-sizing: border-box;
 }
-.container,
-completed_container {
-  /* border: 2px solid white; */
-  width: 50%;
-  display: block;
-  /* width: 400px; */
-  margin: 100px auto;
-}
-#task {
-  outline: none;
-  border: none;
-  width: 80%;
-  height: 30px;
-  border-bottom: 0.5px solid rgb(150, 145, 145);
-}
-.new_task,
-.completed_task {
+
+/* Body Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
   display: flex;
-  margin: 30px 0;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  /* padding: auto; */
+  min-height: 100vh;
+  padding: 20px;
 }
+
+/* Header Styling */
+.header {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #2a2d34;
+  margin-bottom: 10px;
+}
+
+/* Container Styling */
+.container {
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Add Task Section */
+.new_task {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #495057;
+}
+
 .containerBox {
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+#task {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #ced4da;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #6c63ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #5146d6;
+  transform: scale(1.05);
+}
+
+/* Task Lists */
+.toDo,
+.completed_container {
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toDo h3,
+.completed_container h3 {
+  font-size: 1.5rem;
+  color: #495057;
+  margin-bottom: 15px;
   text-align: center;
 }
-button {
-  width: 15%;
-  height: 35px;
-  border: 0.5px solid black;
-  border-radius: 5px;
-  background-color: #248c46;
-}
-button:hover {
-  background-color: aliceblue;
-  color: black;
-  transition: 0.1s;
-}
-.toDo,
-.completed {
-  width: 50%;
-  margin: auto;
-}
-.toDo ul li,
-.completed ul li {
+
+/* Task List Items */
+ul {
   list-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.toDo ul li p,
-.completed ul li p {
-  width: 100%;
-  overflow: auto;
-  font-size: 1.2rem;
-  display: flex;
-  text-align: left;
-  justify-content: space-between;
-  padding: 10px 0 10px 20px;
-  margin: 10px;
-  border: 0.5px solid rgb(150, 145, 145);
-  border-radius: 6px;
-}
-/* .completed{
-    border: 2px black solid;
-    width: 50%;
-    margin: auto;
-} */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 4px;
-}
-::-webkit-scrollbar-track {
-  background-color: #1d1e22;
+  padding: 0;
+  margin: 0;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: white;
+ul li {
+  background-color: #e9ecef;
+  margin-bottom: 10px;
+  padding: 10px 15px;
   border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background-color: #555555;
+ul li:hover {
+  background-color: #dee2e6;
+  transform: scale(1.02);
+}
+
+ul li span {
+  font-size: 1.1rem;
+  color: #343a40;
+  flex-grow: 1;
+}
+
+/* Task Buttons */
+.task-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.task-buttons button {
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.task-buttons .complete {
+  background-color: #28a745;
+  color: white;
+}
+
+.task-buttons .complete:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.task-buttons button:not(.complete) {
+  background-color: #dc3545;
+  color: white;
+}
+
+.task-buttons button:not(.complete):hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+/* Completed List Styling */
+.completed ul li {
+  background-color: #d4edda;
+  color: #155724;
+  text-decoration: line-through;
 }

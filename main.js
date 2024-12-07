@@ -1,57 +1,63 @@
-function getvalue() {
-  let inputtask = document.getElementById("task"); //getting the  element
-  let inputtaskvalue = inputtask.value; //turning it into value
-  console.log(inputtaskvalue);
+let incompleteCount = 0;
+let completedCount = 0;
 
-  if (inputtaskvalue != "") {
-    let list_obeject = add_Items(inputtask);
-    complete_task(list_obeject);
-    remove_task(list_obeject, true);
+function updateCounts() {
+  document.getElementById(
+    "incompleteCount"
+  ).textContent = `(${incompleteCount})`;
+  document.getElementById("completedCount").textContent = `(${completedCount})`;
+}
+
+function addTask() {
+  const taskInput = document.getElementById("task");
+  const taskText = taskInput.value.trim();
+  if (taskText === "") {
+    alert("Please enter a task.");
+    return;
   }
+
+  // Create a new list item
+  const li = document.createElement("li");
+  li.innerHTML = `
+    <span>${taskText}</span>
+    <div class="task-buttons">
+      <button class="complete" onclick="markComplete(this)">Complete</button>
+      <button onclick="deleteTask(this)">Delete</button>
+    </div>
+  `;
+
+  // Add to the incomplete list
+  document.getElementById("incomplete").appendChild(li);
+  incompleteCount++;
+  updateCounts();
+
+  // Clear the input field
+  taskInput.value = "";
 }
 
-function add_Items(task_value) {
-  let list_container = document.getElementById("incomplete");
-  let create_input_element = document.createElement("input");
-  create_input_element.type = "checkbox";
-  let create_list_element = document.createElement("li");
-  let create_button_elemnt = document.createElement("button");
-  let create_p_elemnt = document.createElement("p");
+function deleteTask(button) {
+  const li = button.parentNode.parentNode;
+  const ul = li.parentNode;
+  ul.removeChild(li);
 
-  create_p_elemnt.textContent = task_value.value;
-  create_button_elemnt.textContent = "X";
-
-  create_list_element.append(create_input_element);
-  create_list_element.append(create_p_elemnt);
-  create_list_element.append(create_button_elemnt);
-  list_container.appendChild(create_list_element);
-
-  task_value.value = "";
-  return {
-    p: create_p_elemnt,
-    b: create_button_elemnt,
-    l: create_list_element,
-    c: list_container,
-    i: create_input_element,
-  };
+  // Update counts based on the list
+  if (ul.id === "incomplete") {
+    incompleteCount--;
+  } else {
+    completedCount--;
+  }
+  updateCounts();
 }
-function complete_task(list_object) {
-  list_object.i.addEventListener("change", function () {
-    let completed_task = document.getElementById("done");
-    let completed_list = list_object.l;
-    if (this.checked) {
-      completed_task.appendChild(completed_list);
-    } else {
-      list_object.c.appendChild(completed_list);
-    }
-  });
-}
-function remove_task(list_object, completed_task) {
-  list_object.b.onclick = function () {
-    if (completed_task) {
-      list_object.l.remove();
-    } else {
-      list_object.c.removeChild(list_object.l);
-    }
-  };
+
+function markComplete(button) {
+  const li = button.parentNode.parentNode;
+
+  // Move the task to the "Completed" list
+  document.getElementById("done").appendChild(li);
+  li.querySelector(".task-buttons .complete").remove(); // Remove the "Complete" button
+
+  // Update counts
+  incompleteCount--;
+  completedCount++;
+  updateCounts();
 }

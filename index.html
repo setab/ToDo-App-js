@@ -9,19 +9,19 @@
   </head>
   <body>
     <div class="container">
-      <h3 class="new_task">ADD ITEM</h3>
+      <h1 class="header">TO-DO LIST</h1>
+      <h3 class="new_task">Add a New Task</h3>
       <div class="containerBox">
-        <input type="text" id="task" />
-        <button onclick="getvalue()">ADD</button>
+        <input type="text" id="task" placeholder="Enter your task here..." />
+        <button onclick="addTask()">Add</button>
       </div>
     </div>
     <div class="toDo">
+      <h3>Incomplete Tasks <span id="incompleteCount">(0)</span></h3>
       <ul id="incomplete"></ul>
     </div>
     <div class="completed_container">
-      <h3 class="completed_task">COMPLETED</h3>
-    </div>
-    <div class="completed">
+      <h3>Completed Tasks <span id="completedCount">(0)</span></h3>
       <ul id="done"></ul>
     </div>
     <script src="/main.js"></script>
