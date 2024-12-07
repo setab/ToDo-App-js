@@ -16,7 +16,6 @@ function addTask() {
     return;
   }
 
-  // Create a new list item
   const li = document.createElement("li");
   li.innerHTML = `
     <span>${taskText}</span>
@@ -26,12 +25,10 @@ function addTask() {
     </div>
   `;
 
-  // Add to the incomplete list
   document.getElementById("incomplete").appendChild(li);
   incompleteCount++;
   updateCounts();
 
-  // Clear the input field
   taskInput.value = "";
 }
 
@@ -40,7 +37,6 @@ function deleteTask(button) {
   const ul = li.parentNode;
   ul.removeChild(li);
 
-  // Update counts based on the list
   if (ul.id === "incomplete") {
     incompleteCount--;
   } else {
@@ -52,11 +48,9 @@ function deleteTask(button) {
 function markComplete(button) {
   const li = button.parentNode.parentNode;
 
-  // Move the task to the "Completed" list
   document.getElementById("done").appendChild(li);
-  li.querySelector(".task-buttons .complete").remove(); // Remove the "Complete" button
+  li.querySelector(".task-buttons .complete").remove();
 
-  // Update counts
   incompleteCount--;
   completedCount++;
   updateCounts();
